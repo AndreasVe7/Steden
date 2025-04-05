@@ -4,121 +4,60 @@
   box-sizing: border-box;
 }
 
-.swiper {
-  width: 100%;
-  height: 100vh;
-  position: relative;
+body {
+  overflow: hidden;
+  background-color: #000;
 }
 
-.swiper-slide {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
+.city-info {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.swiper-slide:nth-child(1) {
-  background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200');
-}
-
-.swiper-slide:nth-child(2) {
-  background-image: url('https://images.unsplash.com/photo-1522083165195-3424ed129620?w=1200');
-}
-
-.swiper-slide:nth-child(3) {
-  background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200');
-}
-
-.swiper-slide:nth-child(4) {
-  background-image: url('https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1200');
-}
-
-.swiper-slide:nth-child(5) {
-  background-image: url('https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1200');
+.city-info.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .city-content {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   padding: 2rem 4rem;
   border-radius: 10px;
   color: white;
+  backdrop-filter: blur(8px);
+  min-width: 300px;
+  text-align: center;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.city-info.visible .city-content {
+  transform: translateY(0);
 }
 
 .city-content h2 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
   font-family: Arial, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .city-content p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
 }
 
-/* Behoud van de huidige navigatiepijlen */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #FF6B6B;
-  filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
-  transition: all 0.3s ease;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  color: #FFD166;
-  transform: scale(1.2);
-}
-
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-/* Extreem grote paginatiebolletjes */
-.swiper-pagination-bullet {
-  width: 30px;
-  height: 30px;
-  background: #FF6B6B;
-  opacity: 0.6;
-  margin: 0 15px;
-  transition: all 0.4s ease;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1;
-  background: #FFD166;
-  width: 70px;
-  height: 30px;
-  border-radius: 15px;
-}
-
-/* Aangepaste paginatie positie voor de grotere bolletjes */
-.swiper-pagination {
-  bottom: 50px !important;
-}
-
-/* Schaduweffect voor betere zichtbaarheid */
-.swiper::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 200px;
-  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Weer informatie en loader styling */
 .weather-info {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  min-height: 30px;
-  position: relative;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .loader {
@@ -133,4 +72,27 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+canvas {
+  cursor: grab;
+}
+
+canvas:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 768px) {
+  .city-content {
+      min-width: 250px;
+      padding: 1.5rem 2rem;
+  }
+
+  .city-content h2 {
+      font-size: 2rem;
+  }
+
+  .city-content p {
+      font-size: 1rem;
+  }
 }
