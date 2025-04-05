@@ -1,1 +1,31 @@
-{ "lint-staged": { "*.{js,jsx,ts,tsx}": "eslint --fix" } }
+{
+    "name": "andreas",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "autoprefixer": "^10.4.21",
+        "eslint": "^9.22.0",
+        "globals": "^16.0.0",
+        "lint-staged": "^15.5.0",
+        "postcss": "^8.5.3",
+        "postcss-preset-env": "^10.1.5",
+        "prettier": "^3.5.3",
+        "vite": "^6.1.0"
+    },
+    "dependencies": {
+        "@types/three": "^0.174.0",
+        "gsap": "^3.12.7",
+        "swiper": "^11.2.2",
+        "three": "^0.174.0"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": "eslint --fix"
+    }
+}
